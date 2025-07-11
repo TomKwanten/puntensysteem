@@ -1,5 +1,5 @@
 <?php
-
+//module.php
 class Module 
 {
     private ?int $moduleId;
