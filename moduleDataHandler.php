@@ -68,7 +68,37 @@ class ModuleDataHandler
         $this->disconnect();
     }
 
+    //punten opvragen op basis van module
+    public function getPuntenVoorModule(int $moduleId): array
+    {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "SELECT p.persoonId, p.punten_max100
+            FROM punten p
+            WHERE p.moduleId = :moduleId"
+        );
+        $stmt->execute([':moduleId' => $moduleId]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->disconnect();
 
+        return $result;
+    }
+
+    //punten opvragen op basis van persoon
+    public function getPuntenVoorPersoon(int $persoonId): array
+    {
+        $this->connect();
+        $stmt = $this->dbh->prepare(
+            "SELECT p.moduleId, p.punten_max100
+            FROM punten p
+            WHERE p.persoonId = :persoonId"
+        );
+        $stmt->execute([':persoonId' => $persoonId]);
+        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $this->disconnect();
+
+        return $result;
+    }
 
     private function connect()
     {

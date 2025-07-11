@@ -19,10 +19,19 @@ $modules = $mdh->getModulesList();
     <title>Punten ingeven</title>
 </head>
 <body>
+    <a href="punten-module.php">
+        <button>Bekijk punten per module</button>
+    </a>
+    <a href="punten-persoon.php">
+        <button>Bekijk punten per persoon</button>
+    </a>
+    <br>
+    <br>
     <div class="grid">
         <div>
             <a href="moduleToevoegen.php">Punten ingeven</a>
         </div>
+        
         <br>
         <?php if (empty($modules)): ?>
             <p>Geen modules gevonden...</p>
