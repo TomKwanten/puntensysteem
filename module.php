@@ -1,35 +1,29 @@
 <?php
 //module.php
-class Module 
-{
-    private ?int $moduleId;
-    private ?int $persoonId;
-    private ?int $punt;
 
-    public function __construct(?int $moduleId, ?int $persoonId, ?int $punt)
-    {
-        $this->moduleId = $moduleId;
-        $this->persoonId = $persoonId;
-        $this->punt = $punt;
+//blauwdruk module
+
+class Module {
+    private ?int $id;
+    private ?string $naam;
+    private ?int $prijs;
+
+    public function __construct( ?int $id, ?string $naam, ?int $prijs) {
+        $this->id = $id;
+        $this->naam = $naam;
+        $this->prijs = $prijs;
     }
 
-    public static function create(?int $moduleId, ?int $persoonId, ?int $punt): Module
+    public function getIdModule(): ?int
     {
-        return new Module($moduleId, $persoonId, $punt);
+        return $this->id;
+        //waarde wordt teruggestuurd
     }
 
-    public function getModuleId(): ?int 
+    public function getNaam(): ?string
     {
-        return $this->moduleId;
-    }
-
-    public function getPersoonId(): ?int 
-    {
-        return $this->persoonId;
-    }
-
-    public function getPunt(): ?int 
-    {
-        return $this->punt;
+        return $this->naam;
+        //waarde wordt teruggestuurd
     }
 }
+?>
